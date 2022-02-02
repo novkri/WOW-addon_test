@@ -4,5 +4,6 @@
 ## Author: LastCaress
 ## Version: 0.0.1
 
+Core.lua
 HelloWorld.lua
 MusicPlayer.lua
