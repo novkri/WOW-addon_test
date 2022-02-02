@@ -42,10 +42,10 @@ local function displaySoundList()
   print("------------------------")
 end
 
---TODO
 local function stopSoundHandler()
   StopMusic()
 
+  --TODO not stopping custom sound (because od the Patch?)
   if (customSoundId ~= nil) then
     print('here')
     StopSound(customSoundId)
