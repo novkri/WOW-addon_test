@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: HelloWorld
+## Notes: Prints "Hello, World" to the chat.
+## Author: LastCaress
+## Version: 0.0.1
+
+HelloWorld.lua
