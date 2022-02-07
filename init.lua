@@ -53,13 +53,14 @@ local function HandleSlashCommands(str)
 end
 
 function core:Print(...)
-  -- local hex = select(4, self.Config:GetThemeColor())
-  -- local prefix = string.format("|cff%s%s|r", hex:upper(), "Aura Tracker:")
-  -- DEFAULT_CHAT_FRAME:AddMessage(string.join(" ", prefix, ...))
   DEFAULT_CHAT_FRAME:AddMessage(...)
 end
 
 function core:init(event, name)
+  if (name ~= "HelloWorld") then
+    return
+  end
+
   --to use arrows without rotationg the character
   for i = 1, NUM_CHAT_WINDOWS do
     _G["ChatFrame" .. i .. "EditBox"]:SetAltArrowKeyMode(false)
@@ -67,7 +68,7 @@ function core:init(event, name)
 
   -- TODO: add ReloadUI function
   SLASH_RELOADUI1 = "/rl" -- quick reload
-  SlashCmdList.RELOADUI = ReloadUI
+  SlashCmdList.RELOADUI = ReloadUI()
 
   SLASH_FRAMESTK1 = "/fs" -- quick access to frame stack
   SlashCmdList.FRAMESTK = function()
@@ -78,7 +79,7 @@ function core:init(event, name)
   SLASH_INIT1 = "/init"
   SlashCmdList.INIT = HandleSlashCommands
 
-  core.Print("Добро пожаловать, " .. UnitName("player") .. ". Снова.")
+  core:Print("Добро пожаловать, " .. UnitName("player") .. ". Снова.")
 end
 
 local events = CreateFrame("Frame")
