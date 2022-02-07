@@ -1,3 +1,10 @@
+-- Namespaces
+local _, core = ...
+core.Config = {}
+
+local Config = core.Config
+local UIConfig
+
 -- TODO: add ReloadUI function
 -- SLASH_RELOADUI = "/rl" -- quick reload
 -- SlashCmdList.RELOADUI = ReloadUI
@@ -14,38 +21,37 @@ for i = 1, NUM_CHAT_WINDOWS do
 end
 
 ----------------------------------------------------------
+function Config:Toggle()
+  local menu = UIConfig or Config:CreateMenu()
+  menu:SetShown(not menu:IsShown())
+end
 
--- Parent frame:
-local UIConfig = CreateFrame("Frame", "HelloWorldFrame", UIParent, "BasicFrameTemplateWithInset")
+function Config:CreateButton(point, relativeFrame, relativePoint, yOffset, xOffset, text)
+  local btn = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate")
+  btn:SetPoint(point, relativeFrame, relativePoint, yOffset, xOffset)
+  btn:SetSize(140, 40)
+  btn:SetText(text)
+  btn:SetNormalFontObject("GameFontNormalLarge")
+  btn:SetHighlightFontObject("GameFontHighlightLarge")
+end
 
-UIConfig:SetSize(300, 360)
-UIConfig:SetPoint("CENTER", UIParent, "CENTER")
+function Config:CreateMenu()
+  -- Parent frame:
+  local UIConfig = CreateFrame("Frame", "HelloWorldFrame", UIParent, "BasicFrameTemplateWithInset")
 
-UIConfig.title = UIConfig:CreateFontString(nil, "OVERLAY")
-UIConfig.title:SetFontObject("GameFontHighlight")
-UIConfig.title:SetPoint("LEFT", UIConfig.TitleBg, "LEFT", 5, 0)
-UIConfig.title:SetText("Hello World")
+  UIConfig:SetSize(300, 360)
+  UIConfig:SetPoint("CENTER", UIParent, "CENTER")
 
--- Child frames and regions:
---BUTTONS
-UIConfig.saveButton1 = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate")
-UIConfig.saveButton1:SetPoint("CENTER", UIConfig, "CENTER", 0, -100)
-UIConfig.saveButton1:SetSize(140, 40)
-UIConfig.saveButton1:SetText("ljl")
-UIConfig.saveButton1:SetNormalFontObject("GameFontNormalLarge")
-UIConfig.saveButton1:SetHighlightFontObject("GameFontHighlightLarge")
+  UIConfig.title = UIConfig:CreateFontString(nil, "OVERLAY")
+  UIConfig.title:SetFontObject("GameFontHighlight")
+  UIConfig.title:SetPoint("LEFT", UIConfig.TitleBg, "LEFT", 5, 0)
+  UIConfig.title:SetText("Hello World")
 
--- UI Reset Button
-UIConfig.resetBtn = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate")
-UIConfig.resetBtn:SetPoint("CENTER", UIConfig, "CENTER", 0, 0)
-UIConfig.resetBtn:SetSize(140, 40)
-UIConfig.resetBtn:SetText("Reset")
-UIConfig.resetBtn:SetNormalFontObject("GameFontNormalLarge")
-UIConfig.resetBtn:SetHighlightFontObject("GameFontHighlightLarge")
+  --BUTTONS
+  UIConfig.saveBtn = self:CreateButton("CENTER", UIConfig, "TOP", -70, "Save")
+  UIConfig.resetBtn = self:CreateButton("TOP", UIConfig.saveBtn, "BOTTOM", -10, "Reset")
+  UIConfig.loadBtn = self:CreateButton("TOP", UIConfig.resetBtn, "BOTTOM", -10, "Load")
 
-UIConfig.saveButton = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate")
-UIConfig.saveButton:SetPoint("CENTER", UIConfig, "CENTER", 0, -50)
-UIConfig.saveButton:SetSize(140, 40)
-UIConfig.saveButton:SetText("Save")
-UIConfig.saveButton:SetNormalFontObject("GameFontNormalLarge")
-UIConfig.saveButton:SetHighlightFontObject("GameFontHighlightLarge")
+  UIConfig:Hide()
+  return UIConfig
+end
