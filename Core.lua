@@ -29,10 +29,18 @@ UIConfig.title:SetText('Hello World')
 -- Child frames and regions:
 --BUTTONS
 UIConfig.saveButton = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate")
-UIConfig.saveButton:SetPoint("CENTER", UIConfig, "TOP", 0, 0)
+UIConfig.saveButton:SetPoint("CENTER", UIConfig, "BOTTOM", 0, 70)
 UIConfig.saveButton.SetSize(140, 40)
 UIConfig.saveButton:SetText("Save")
-UIConfig.saveButton:SetNormalFontObject("GameFontNormalLarge")
-UIConfig.saveButton:SetHighlightFontObject("GameFontHighlightLarge")
+UIConfig.saveButton:SetNormalFontObject("GameFontNormal")
+UIConfig.saveButton:SetHighlightFontObject("GameFontHighlight")
 
-UIConfig.saveButton:SetPushedFontObject("Pushed")
+-- UIConfig.saveButton:SetPushedFontObject("Pushed")
+
+-- UI Save Button
+UIConfig.saveButtonn = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate");
+UIConfig.saveButtonn:SetPoint("CENTER", UIConfig, "TOP", 0, -20);
+UIConfig.saveButtonn:SetSize(140,40);
+UIConfig.saveButtonn:SetText("Save"); 		-- Dirctly communicates to the button's main FontString object
+UIConfig.saveButtonn:SetNormalFontObject("GameFontNormalLarge");
+UIConfig.saveButtonn:SetHighlightFontObject("GameFontHighlightLarge");
