@@ -7,3 +7,4 @@
 Core.lua
 HelloWorld.lua
 MusicPlayer.lua
+init.lua
