@@ -16,31 +16,38 @@ end
 ----------------------------------------------------------
 
 -- Parent frame: 
-local UIConfig = CreateFrame("Frame", "HelloWorldFrame", UIParent, "BasicFrameTemplateWithInset")
+local UIConfig = CreateFrame("Frame", "HelloWorldFrame", UIParent, "BasicFrameTemplateWithInset");
 
-UIConfig:SetSize(300, 360)
-UIConfig:SetPoint("CENTER", UIParent, "CENTER")
+UIConfig:SetSize(300, 360);
+UIConfig:SetPoint("CENTER", UIParent, "CENTER");
 
-UIConfig.title = UIConfig:CreateFontString(nil, "OVERLAY")
-UIConfig.title:SetFontObject("GameFontHighlight")
-UIConfig.title:SetPoint("LEFT", UIConfig.TitleBg, "LEFT", 5, 0)
-UIConfig.title:SetText('Hello World')
+UIConfig.title = UIConfig:CreateFontString(nil, "OVERLAY");
+UIConfig.title:SetFontObject("GameFontHighlight");
+UIConfig.title:SetPoint("LEFT", UIConfig.TitleBg, "LEFT", 5, 0);
+UIConfig.title:SetText('Hello World');
 
 -- Child frames and regions:
 --BUTTONS
-UIConfig.saveButton = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate")
-UIConfig.saveButton:SetPoint("CENTER", UIConfig, "BOTTOM", 0, 70)
-UIConfig.saveButton.SetSize(140, 40)
-UIConfig.saveButton:SetText("Save")
-UIConfig.saveButton:SetNormalFontObject("GameFontNormal")
-UIConfig.saveButton:SetHighlightFontObject("GameFontHighlight")
+UIConfig.saveButton1 = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate");
+UIConfig.saveButton1:SetPoint("CENTER", UIConfig, "CENTER", 0, -100);
+UIConfig.saveButton1:SetSize(140, 40);
+UIConfig.saveButton1:SetText('ljl');
+UIConfig.saveButton1:SetNormalFontObject("GameFontNormalLarge");
+UIConfig.saveButton1:SetHighlightFontObject("GameFontHighlightLarge");
 
--- UIConfig.saveButton:SetPushedFontObject("Pushed")
 
--- UI Save Button
-UIConfig.saveButtonn = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate");
-UIConfig.saveButtonn:SetPoint("CENTER", UIConfig, "TOP", 0, -20);
-UIConfig.saveButtonn:SetSize(140,40);
-UIConfig.saveButtonn:SetText("Save"); 		-- Dirctly communicates to the button's main FontString object
-UIConfig.saveButtonn:SetNormalFontObject("GameFontNormalLarge");
-UIConfig.saveButtonn:SetHighlightFontObject("GameFontHighlightLarge");
+-- UI Reset Button
+UIConfig.resetBtn = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate");
+UIConfig.resetBtn:SetPoint("CENTER", UIConfig, "CENTER", 0, 0);
+UIConfig.resetBtn:SetSize(140, 40);
+UIConfig.resetBtn:SetText("Reset");
+UIConfig.resetBtn:SetNormalFontObject("GameFontNormalLarge");
+UIConfig.resetBtn:SetHighlightFontObject("GameFontHighlightLarge");
+
+
+UIConfig.saveButton = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate");
+UIConfig.saveButton:SetPoint("CENTER", UIConfig, "CENTER", 0, -50);
+UIConfig.saveButton:SetSize(140, 40);
+UIConfig.saveButton:SetText("Save");
+UIConfig.saveButton:SetNormalFontObject("GameFontNormalLarge");
+UIConfig.saveButton:SetHighlightFontObject("GameFontHighlightLarge");
